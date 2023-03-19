@@ -1,0 +1,86 @@
+
+
+#include <iostream>
+
+#include "stacktype.cpp"
+
+using namespace std;
+
+int main()
+{
+StackType<int>s;
+/**Checking if the stack is empty**/
+if(s.IsEmpty()==true)
+    cout<<"The stack is empty"<<endl;
+else
+    cout<<"The stack is not empty"<<endl;
+    /**pushing 4 items  into the stack**/
+s.Push(5);
+s.Push(7);
+s.Push(4);
+s.Push(2);
+/**Checking if the stack is empty**/
+if(s.IsEmpty()==true)
+    cout<<"The stack is empty"<<endl;
+else
+    cout<<"The stack is not empty"<<endl;
+
+
+/**Checking if the stack is full**/
+if(s.IsFull()==true)
+    cout<<"The stack is full"<<endl;
+else
+    cout<<"The stack is not full"<<endl;
+
+    cout<<"Printing the stack"<<endl;
+    s.Print();
+
+
+s.Push(3);
+cout<<"\n";
+s.Print( );
+/**Checking if the stack is full**/
+if(s.IsFull()==true)
+    cout<<"The stack is full"<<endl;
+else
+    cout<<"The stack is not full"<<endl;
+
+    s.Pop();
+    s.Pop();
+    cout<<s.Top()<<endl;
+    cout<<"Printing the stack"<<endl;
+    s.Print();
+    /**Taking string of parentheses from the user as input and using a stack to check if the string of parentheses is balanced or not**/
+    char str[200];
+    cout<<"Enter the string:";
+    cin>>str;
+    int i=0,count1=0;
+    for(i=0;str[i]!='\0';i++){
+
+       count1++;
+
+    }
+StackType<char>s1;
+if(count1<=MAX_ITEMS){
+    for(i=0;i<count1;i++){
+
+        if(str[i]=='('||str[i]=='{'||str[i]=='[ ')
+           s1.Push(str[i]);
+        else if(str[i]==')'||str[i]=='}'||str[i]=='] ')
+        {
+            if(s1.IsEmpty()==true)
+               return false;
+        else
+            s1.Pop();
+
+}
+    }
+    if(s1.IsEmpty()==true)
+        cout<<"Balanced.";
+    else
+        cout<<"The expression is not Balanced";
+
+    }
+    else
+        cout<<"Stack is overflowed";
+}

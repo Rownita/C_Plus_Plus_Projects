@@ -1,0 +1,59 @@
+main.cpp
+#include "StackType.h"
+#include<iostream>
+using namespace std;
+template <class ItemType>
+StackType<ItemType>::StackType()
+{
+    top = -1;
+}
+template <class ItemType>
+bool StackType<ItemType>::IsEmpty()
+{
+    if(top==-1)
+    return true;               /**Modifying the IsEmpty( ) function**/
+    else
+        return false;
+}
+template <class ItemType>
+bool StackType<ItemType>::IsFull()
+{
+    if(top==MAX_ITEMS-1)       /**Modifying the IsFull() **/
+    return true;
+    else
+        return false;
+
+}
+template <class ItemType>
+void StackType<ItemType>::Push(ItemType newItem)
+{
+    if( IsFull() ) throw FullStack();
+    top++;
+    items[top] = newItem;
+}
+template <class ItemType>
+void StackType<ItemType>::Pop()
+{
+    if( IsEmpty() ) throw EmptyStack();
+    top--;
+}
+template <class ItemType>
+ItemType StackType<ItemType>::Top()
+{
+    if (IsEmpty()) throw EmptyStack();
+    return items[top];
+}
+
+template <class ItemType>
+void  StackType<ItemType>::Print()
+{
+
+    int i;
+
+      for(i=0;i<MAX_ITEMS;i++)
+      cout<<items[i]<<endl;
+
+
+
+
+}
